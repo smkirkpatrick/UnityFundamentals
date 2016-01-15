@@ -13,7 +13,13 @@ public class TriggerEvent : MonoBehaviour
 			// turn on the light
 			lightBulb.SetActive(true);
 
-			GetComponent<AudioSource>().PlayOneShot( lightBulbOn );
+			AudioSource audioSource = GetComponent<AudioSource>();
+
+			Debug.Log( "blend: " + audioSource.spatialBlend + ", max distance: " + 
+						audioSource.maxDistance);
+			//GetComponent<AudioSource>().PlayOneShot( lightBulbOn );
+			audioSource.clip = lightBulbOn;
+			audioSource.Play();
 
 			// wall.EnableScale();
 			wall.GetComponent<ObjectScaling>().EnableScale();
