@@ -4,6 +4,8 @@ using System.Collections;
 public class Spawner : MonoBehaviour
 {
 	public GameObject spawnType = null;
+	public float scaleMin = 0.5f;
+	public float scaleMax = 2.0f;
 
 	void Update()
 	{
@@ -12,6 +14,9 @@ public class Spawner : MonoBehaviour
 			obj.transform.position = this.transform.position;
 			obj.AddComponent<Rigidbody>();
 			obj.name = "mySphere";
+
+			float scaleSize = Random.Range ( scaleMin, scaleMax );
+			obj.transform.localScale = Vector3.one * scaleSize;
 		}
 	}
 }
