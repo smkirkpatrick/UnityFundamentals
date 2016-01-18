@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
 	public GameObject spawnType = null;
 	public float scaleMin = 0.5f;
 	public float scaleMax = 2.0f;
+	public float force = 100.0f;
 
 	void Update()
 	{
@@ -13,6 +14,7 @@ public class Spawner : MonoBehaviour
 			GameObject obj = Instantiate ( spawnType ) as GameObject;
 			obj.transform.position = this.transform.position;
 			obj.AddComponent<Rigidbody>();
+			obj.GetComponent<Rigidbody>().AddRelativeForce ( Vector3.back * force );
 			obj.name = "mySphere";
 
 			float scaleSize = Random.Range ( scaleMin, scaleMax );
